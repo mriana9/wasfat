@@ -1,0 +1,148 @@
+@use '../../../../styles.scss' as color;
+
+.closeShareBox {
+    cursor: pointer;
+
+    &:hover {
+        transition: 1s;
+        transform: scale(1.2);
+        border-radius: 4px;
+        background-color: rgb(255, 156, 156);
+    }
+}
+
+svg {
+    cursor: pointer;
+}
+
+.recipes-card {
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 5px;
+    margin-top: 15px;
+    border-radius: 8px;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #ededed;
+
+    .recipes-card-img {
+        height: 150px;
+        width: 100%;
+        border-radius: 8px;
+        margin-left: 10px;
+        overflow: hidden;
+        background-color: #d5d5d5;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            &:hover {
+                transition: 2s;
+                transform: scale(1.2) rotate(5deg);
+            }
+        }
+    }
+
+    .recipes-card-info {
+        padding-left: 20px;
+        text-transform: capitalize;
+
+        a {
+            font-size: 20px;
+            color: #000;
+            font-weight: 600;
+
+            &:hover {
+                color: color.$primary-color;
+            }
+        }
+
+        p {
+            font-size: 14px;
+            color: #6F6F87;
+            padding: 10px 0px;
+        }
+
+        .recipes-card-icon {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .profile-page {
+        .user-background-cover {
+            max-width: 100vw;
+            overflow-x: hidden;
+
+            p {
+                font-size: 44px;
+            }
+        }
+
+        .user-information {
+            max-width: 80%;
+            margin: auto;
+            margin-top: -50px;
+
+            .user-info {
+                padding-left: 0;
+            }
+        }
+
+        .search-box {
+            text-align: center;
+
+            button {
+                margin-top: 10px;
+                max-width: 150px;
+            }
+        }
+
+        .user-activity {
+            .activity-col {
+                .favorites-info {
+                    width: 100%;
+                }
+            }
+
+            .user-ads {
+                background-color: #2f2f32 !important;
+            }
+        }
+
+        .info-left-img {
+            display: none !important;
+        }
+    }
+
+    .recipes-card-img {
+        margin-left: 0 !important;
+    }
+}
+
+@keyframes showShareBox {
+    from {
+        transform: translateY(-500px);
+    }
+
+    to {
+        height: 400px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes showDeleteBox {
+    from {
+        transform: translateY(-500px);
+    }
+
+    to {
+        height: 180px;
+        transform: translateY(0);
+    }
+}

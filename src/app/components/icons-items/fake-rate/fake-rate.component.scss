@@ -1,0 +1,323 @@
+@use '../../../../styles.scss' as color;
+
+svg{
+    cursor: pointer;
+}
+
+button {
+    margin: 0px 10px;
+    border: none;
+    padding: 8px 20px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: capitalize;
+    background-color: color.$primary-color;
+}
+a {
+    cursor: pointer;
+    color: #2eafff !important;
+}
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    .login-form {
+        width: 40vw;
+        padding: 20px;
+        position: absolute;
+        border-radius: 12px;
+        text-align: center;
+        overflow: hidden;
+        text-transform: capitalize;
+        background-color: #fff;
+        animation: showLoginPopup ease-in-out 1s;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+        h2 {
+            line-height: 100%;
+            font-size: 48px;
+            letter-spacing: -3px;
+            font-weight: 500;
+            color: #2f2f32;
+            padding-bottom: 10px;
+            letter-spacing: 2px;
+
+            &::first-letter {
+                color: color.$primary-color;
+            }
+        }
+
+        p {
+            color: #6F6F87;
+            padding: 10px 0px;
+        }
+
+        form {
+            .input-box {
+                .input-flied {
+                    display: flex;
+                    align-items: flex-end;
+                    margin-top: 25px;
+
+                    input {
+                        width: 100%;
+                        padding-left: 10px;
+                        border: none;
+                        outline: none;
+                        color:#2f2f32;
+                        border-bottom: 1px solid #d7d7d7;
+
+                        &::placeholder {
+                            font-size: 14px;
+                            text-transform: capitalize;
+                        }
+
+                        &:focus {
+                            border-bottom: 1.2px solid color.$primary-color;
+                        }
+                    }
+
+                    label {
+                        font-family: 14px;
+                        padding-left: 10px;
+                        color: #6F6F87;
+                    }
+                }
+
+                .msg-error {
+                    width: 100%;
+                    display: inline-block;
+                    padding-left: 30px;
+                    font-size: 14px;
+                    letter-spacing: 0px;
+                    color: color.$msg-error;
+                    text-align: start !important;
+                    text-transform: capitalize;
+                }
+            }
+
+            .form-btn {
+                margin: 10px 0px;
+
+                button {
+                    border: none;
+                    padding: 10px 30px;
+                    color: #fff;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    background-color: color.$primary-color;
+                }
+            }
+
+        }
+
+        &::before {
+            content: '';
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: -5px;
+            bottom: -25px;
+            border-radius: 50%;
+            border: 1px solid color.$primary-color;
+        }
+    }
+    
+    .closeShareBox {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;top: 10px;
+
+        &:hover {
+            transition: 1s;
+            transform: scale(1.2);
+            border-radius: 4px;
+            background-color: rgb(255, 173, 173);
+        }
+    }
+
+    .register-form {
+        width: 40vw;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #fff;
+        position: absolute;
+        text-align: center;
+        text-transform: capitalize;
+        border-radius: 8px;
+        animation: showLoginPopup ease-in-out 1s;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        h2 {
+            line-height: 100%;
+            font-size: 48px;
+            letter-spacing: -3px;
+            font-weight: 500;
+            color: #2f2f32;
+            padding-bottom: 10px;
+            letter-spacing: 2px;
+
+            &::first-letter {
+                color: color.$primary-color;
+            }
+        }
+
+        span {
+            text-transform: uppercase;
+            color: color.$primary-color;
+            letter-spacing: 3px;
+        }
+
+        p {
+            color: #6F6F87;
+            padding: 15px 0px;
+        }
+
+        form {
+            .input-box {
+                .input-flied {
+                    display: flex;
+                    align-items: flex-end;
+                    margin-top: 25px;
+
+                    input {
+                        width: 100%;
+                        padding-left: 10px;
+                        border: none;
+                        outline: none;
+                        color:#2f2f32;
+                        border-bottom: 1px solid #d7d7d7;
+
+                        &::placeholder {
+                            font-size: 14px;
+                            text-transform: capitalize;
+                        }
+
+                        &:focus {
+                            border-bottom: 1.2px solid color.$primary-color;
+                        }
+                    }
+
+                    label {
+                        font-size: 14px;
+                        padding-left: 10px;
+                        color: #6F6F87;
+                    }
+                }
+
+                .msg-error {
+                    width: 100%;
+                    display: inline-block;
+                    padding-left: 30px;
+                    font-size: 14px;
+                    letter-spacing: 0px;
+                    color: color.$msg-error;
+                    text-align: start !important;
+                    text-transform: capitalize;
+                }
+            }
+
+            .gender-box {
+                margin: 20px 10px;
+
+                input {
+                    min-width: 25px;
+                    min-height: 25px;
+                    accent-color: color.$primary-color;
+                }
+            }
+
+            .form-btn {
+                margin: 10px 0px;
+
+                button {
+                    border: none;
+                    padding: 10px 30px;
+                    color: #fff;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    background-color: color.$primary-color;
+                }
+            }
+        }
+    }
+}
+
+@keyframes showLoginPopup {
+    from {
+        transform: translateY(-800px);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+@media (max-width: 1024px) {
+    .login-form {
+        min-width: 95%;
+    }
+
+    .register-form {
+        min-height: 100vh;
+        min-width: 99vw;
+        position: static;
+        left: 0%;
+        top: 0%;
+        margin-top: 60px;
+        transform: translate(0%, 0%);
+    }
+}
+
+.rate {
+    height: 30px;
+    float: left;
+}
+
+.rate-average {
+    padding-top: 10px;
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -100px;
+}
+
+.rate:not(:checked)>label {
+    width: 1em;
+    float: right;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rate>input:checked~label {
+    color: color.$primary-color;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: color.$primary-color;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: color.$primary-color;
+}

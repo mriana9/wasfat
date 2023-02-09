@@ -1,0 +1,53 @@
+@use '../../../styles.scss' as color;
+
+.navbar {
+    width: 100%;
+    z-index: 99;
+    position: fixed;
+    text-transform: capitalize;
+
+    li {
+        list-style: none;
+
+        a {
+            color: #666;
+            padding: 0px 10px;
+        }
+    }
+
+    &.bg-light {
+        background-color: #fff !important;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 5px 0px;
+    }
+
+    .nav-link {
+        &.active {
+            color: color.$primary-color;
+        }
+    }
+
+    .dropdown {
+        .dropdown-menu {
+            li {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+
+                &:first-child {
+                    border-bottom: 1px solid #d7d7d7;
+                }
+
+                a {
+                    padding-left: 10px;
+
+                    &:hover {
+                        padding-left: 12px;
+                        transition: 1s;
+                        color: color.$primary-color;
+                        background-color: transparent !important;
+                    }
+                }
+            }
+        }
+    }
+}

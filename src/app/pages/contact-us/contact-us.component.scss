@@ -1,0 +1,172 @@
+@use '../../../styles.scss' as color;
+
+.contact-us-page {
+    padding: 70px 0px;
+    height: max-content;
+    position: relative;
+    text-transform: capitalize;
+    background-color: #f5f5f5;
+
+    .recipe-img-bg {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        border-radius: 50%;
+        left: -150px;
+        top: -150px;
+        border: 80px solid color.$primary-color;
+        background-color: #fff;
+
+        &::before {
+            content: '';
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            opacity: 0.7;
+            border-radius: 50%;
+            right: -200px;
+            bottom: 0;
+            background-color: color.$primary-color;
+        }
+    }
+
+    .recipe-img {
+        width: 150px;
+        position: absolute;
+        left: 200px;
+        top: 150px;
+    }
+
+    .contact-us-info {
+        span {
+            padding: 5px 10px;
+            color: #f5f5f5;
+            background-color: color.$primary-color;
+        }
+
+        h2 {
+            font-size: 48px;
+            letter-spacing: -3px;
+            font-weight: 500;
+            color: #2f2f32;
+            padding: 15px 0px;
+            letter-spacing: 2px;
+            font-weight: 700;
+
+            &::first-letter {
+                color: color.$primary-color;
+            }
+        }
+
+        p {
+            color: #6F6F87;
+            padding: 15px 0px;
+        }
+    }
+
+    .contact-us-form {
+        width: 90%;
+        min-height: 500px;
+        padding: 30px;
+        position: relative;
+        z-index: 2;
+        background-color: #fff;
+
+        .cocktail-img {
+            width: 150px;
+            position: absolute;
+            z-index: 3;
+            right: -50px;
+            bottom: -10px;
+        }
+
+        form {
+            padding: 15px;
+            border: 3px dashed #f5f5f5;
+
+            h3 {
+                text-align: center;
+                padding: 10px 0px;
+            }
+
+            .input-box {
+                margin-bottom: 20px;
+
+                input,
+                textarea {
+                    width: 100%;
+                    padding: 8px 20px;
+                    border: none;
+                    outline: none;
+                    caret-color: color.$primary-color;
+                    border-bottom: 1px solid color.$primary-color;
+                    background-color: #f6f6f6;
+
+                    &::placeholder {
+                        color: #6F6F87;
+                        text-transform: capitalize;
+                    }
+                }
+
+                .msg-error {
+                    width: 100%;
+                    display: inline-block;
+                    font-size: 14px;
+                    letter-spacing: 0px;
+                    color: color.$msg-error;
+                    text-align: start !important;
+                    text-transform: capitalize;
+                }
+            }
+
+            .form-btn {
+                display: flex;
+                justify-content: center;
+
+                button {
+                    padding: 10px 30px;
+                    border: none;
+                    color: #fff;
+                    text-transform: capitalize;
+                    background-color: color.$primary-color;
+                }
+            }
+        }
+    }
+
+    .circle-bg {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        opacity: 0.5;
+        z-index: 1;
+        background-color: color.$primary-color;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .contact-us-page {
+        padding: 20px;
+        padding-top: 80px;
+
+        .contact-us-info {
+            h2 {
+                font-size: 40px;
+            }
+
+            .contact-us-form {
+                min-width: 100%;
+            }
+        }
+    }
+
+    .circle-bg,
+    .cocktail-img,
+    .recipe-img-bg {
+        display: none !important;
+    }
+}

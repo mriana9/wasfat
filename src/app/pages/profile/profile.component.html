@@ -1,0 +1,175 @@
+<div *ngIf="!currentUser">
+    <app-page-loading></app-page-loading>
+</div>
+
+<section class="profile-page">
+    <div class="user-background-cover">
+        <p>wasfat</p>
+    </div>
+    <div class="container m-auto py-3">
+        <div class="user-information">
+            <div class="row">
+                <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12">
+                    <div class="user-img">
+                        <img src="./assets/images/profile/user.png" alt="user-img">
+                    </div>
+                </div>
+                <div class="col-xl-10 col-lg-8 col-md-12 col-sm-12 ">
+                    <div class="user-info">
+                        <h2>{{ currentUser?.firstName }} {{ currentUser?.lastName }}</h2>
+                        <p *ngIf="currentUser">{{ currentUser.gender | gender }}</p>
+                        <p>{{ currentUser?.dateOfBirth }}</p>
+                        <p style="text-transform:lowercase ;">{{ currentUser?.email }}</p>
+                    </div>
+                    <div class="user-buttons w-100">
+                        <div>
+                            <app-add-recipe [currentUser]="currentUser"></app-add-recipe>
+                        </div>
+                        <div>
+                            <app-add-cocktail [currentUser]="currentUser"></app-add-cocktail>
+                        </div>
+                    </div>
+                    <!-- <img class="info-left-img" src="./assets/images/profile/bg.svg" alt="bg img"> -->
+                </div>
+            </div>
+        </div>
+        <div class="search-box">
+            <div class="row">
+                <div class="col-xl-10 col-lg-10 col-md-8 col-sm-12">
+                    <input #searchValue type="text" placeholder="Search..." (keyup)="checkSearch(searchValue.value)">
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12">
+                    <button (click)="search(searchValue.value)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #fff;">
+                            <path
+                                d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
+                            </path>
+                        </svg>
+                        search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-activity">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <div class="activity-col user-favorites">
+                        <h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:#ff7c7c;">
+                                <path
+                                    d="M20.205 4.791a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412L12 21.414l8.207-8.207c2.354-2.353 2.355-6.049-.002-8.416z">
+                                </path>
+                            </svg>
+                            my favorites:
+                        </h2>
+
+                        <div class="items">
+                            <ng-template ngFor let-recipe [ngForOf]="filteredUserFavoriteRecipes" let-i="index">
+                                <app-small-card *ngIf="i<3" [category]="'favorite'" [data]="recipe" [type]="'recipe'">
+                                </app-small-card>
+                            </ng-template>
+                            <ng-template ngFor let-cocktail [ngForOf]="filteredUserFavoriteCocktails" let-i="index">
+                                <app-small-card *ngIf="i<3" [category]="'favorite'" [data]="cocktail"
+                                    [type]="'cocktail'"></app-small-card>
+                            </ng-template>
+                        </div>
+                        <div class="see-more mt-2">
+                            <div *ngIf="userFavoriteRecipes.length == 0 && userFavoriteCocktails.length == 0">
+                                <p class="mb-2">You don't have any favorite recipes or cocktails</p>
+                            </div>
+                            <div *ngIf="userFavoriteRecipes.length + userFavoriteCocktails.length > 0 && filteredUserFavoriteRecipes.length + filteredUserFavoriteCocktails.length == 0">
+                                <p>No results found</p>
+                            </div>
+                            <a *ngIf="userFavoriteRecipes.length + userFavoriteCocktails.length > 5" routerLink="/favorites">
+                                <app-see-more></app-see-more>
+                            </a>
+                        </div>
+                    </div>
+                    <img src="./assets/images/menu/4.jpg" class="activity-col img-fluid mt-2" alt="menu-img">
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="activity-col user-cocktails mx-4">
+                        <h2>my cocktails:</h2>
+                        <div class="row">
+                            <div class="user-recipes-items">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 cocktail-box">
+                                    <ng-template ngFor let-cocktail [ngForOf]="filteredUserCocktails" let-i="index">
+                                        <app-slider-cards *ngIf="i<3" [data]="cocktail" [type]="'cocktail'">
+                                        </app-slider-cards>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="see-more mt-2">
+                            <div *ngIf="userCocktails.length == 0">
+                                <p class="mb-2">You don't have any cocktails</p>
+                                <app-add-cocktail></app-add-cocktail>
+                            </div>
+                            <div *ngIf="userCocktails.length > 0 && filteredUserCocktails.length == 0">
+                                <p>No results found</p>
+                            </div>
+                            <a *ngIf="filteredUserCocktails.length > 3" routerLink="/user-cocktails">
+                                <app-see-more></app-see-more>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="activity-col user-recipes mx-4">
+                        <h2>my recipes:</h2>
+
+                        <div class="user-recipes-items">
+                            <ng-template ngFor let-recipe [ngForOf]="filteredUserRecipes" let-i="index">
+                                <app-big-card *ngIf="i<3" [data]="recipe" [type]="'recipe'"></app-big-card>
+                            </ng-template>
+                        </div>
+                        <div class="see-more mt-2">
+                            <div *ngIf="userRecipes.length == 0">
+                                <p class="mb-2">You don't have any recipes</p>
+                                <app-add-recipe></app-add-recipe>
+                            </div>
+                            <div *ngIf="userRecipes.length > 0 && filteredUserRecipes.length == 0">
+                                <p>No results found</p>
+                            </div>
+                            <a *ngIf="filteredUserRecipes.length > 3" routerLink="/user-recipes">
+                                <app-see-more></app-see-more>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <div class="activity-col share-with-user">
+                        <h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #666">
+                                <path
+                                    d="M11 7.05V4a1 1 0 0 0-1-1 1 1 0 0 0-.7.29l-7 7a1 1 0 0 0 0 1.42l7 7A1 1 0 0 0 11 18v-3.1h.85a10.89 10.89 0 0 1 8.36 3.72 1 1 0 0 0 1.11.35A1 1 0 0 0 22 18c0-9.12-8.08-10.68-11-10.95zm.85 5.83a14.74 14.74 0 0 0-2 .13A1 1 0 0 0 9 14v1.59L4.42 11 9 6.41V8a1 1 0 0 0 1 1c.91 0 8.11.2 9.67 6.43a13.07 13.07 0 0 0-7.82-2.55z">
+                                </path>
+                            </svg>
+                            shared with me:
+                        </h2>
+
+                        <div class="items">
+                            <ng-template ngFor let-recipe [ngForOf]="filteredUserSharedRecipes" let-i="index">
+                                <app-small-card *ngIf="i<3" [data]="recipe" [type]="'recipe'"></app-small-card>
+                            </ng-template>
+                            <ng-template ngFor let-cocktail [ngForOf]="filteredUserSharedCocktails" let-i="index">
+                                <app-small-card *ngIf="i<3" [data]="cocktail" [type]="'cocktail'"></app-small-card>
+                            </ng-template>
+                        </div>
+                        <div class="see-more mt-2">
+                            <div *ngIf="userSharedRecipes.length == 0 && userSharedCocktails.length == 0">
+                                <p class="mb-2">You don't have any shared recipes or cocktails</p>
+                            </div>
+                            <div *ngIf="userSharedRecipes.length + userSharedCocktails.length > 0 && filteredUserSharedRecipes.length + filteredUserSharedCocktails.length == 0">
+                                <p>No results found</p>
+                            </div>
+                            <a *ngIf="userSharedRecipes.length + userSharedCocktails.length > 5" routerLink="/suggested">
+                                <app-see-more></app-see-more>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

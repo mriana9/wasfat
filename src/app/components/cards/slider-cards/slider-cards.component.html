@@ -1,0 +1,15 @@
+<div class="swiper-slide">
+    <div class="cocktail-img d-flex justify-content-center align-items-center">
+        <app-icon-loading *ngIf="!imageUrl"></app-icon-loading>
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="menu-img">
+    </div>
+    <div class="cocktail-info">
+        <a routerLink="{{path}}">{{ data?.name }}</a>
+        <p>{{ data?.instructions?.substring(0 ,50) }}</p>
+    </div>
+    <div class="cocktail-icons">
+        <app-delete-item [data]="data" [type]="type"></app-delete-item>
+        <app-favorite [data]="data" [type]="type"></app-favorite>
+        <app-share-item [data]="data" [type]="type"></app-share-item>
+    </div>
+</div>

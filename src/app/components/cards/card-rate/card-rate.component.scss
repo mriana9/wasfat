@@ -1,0 +1,112 @@
+@use '../../../../styles.scss' as color;
+
+.item-rating {
+    height: 250px;
+    
+
+    .item-category {
+        color: #707070;
+        display: inline-block;
+        width: 100px;
+        height: 40px;
+        display: flex;
+        padding-left: 10px;
+        margin-left: 20px;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border-top: 1px solid #d5d5d5;
+        border-bottom: 1px solid #d5d5d5;
+        border-right: 1px solid #d5d5d5;
+
+        &::before {
+            content:'' ;
+            position: absolute;
+            left: -20px;
+            top: -1px;
+            width: 30px;
+            height: 40px;
+            background-color: #d5d5d5;
+            border-top: 1px solid #d5d5d5;
+            border-bottom: 1px solid #d5d5d5;
+            border-left: 1px solid #d5d5d5;
+        }
+
+        &::after {
+            content:'' ;
+            position: absolute;
+            left: -6px;
+            width: 20px;
+            height: 20px;
+            background-color: #d5d5d5;
+            transform: rotate(45deg);
+        }
+    }
+
+    &.card-border {
+        padding: 20px;
+        text-transform: capitalize;
+        border: 1px solid #ededed;
+    }
+
+    .item-icon {
+        div {
+            color: #666;
+            display: flex;
+            margin-top: 10px;
+            align-items: center;
+        }
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
+    }
+
+    .rate {
+        height: 30px;
+        float: left;
+    }
+
+    .rate-average {
+        padding-top: 10px;
+    }
+
+    .rate:not(:checked)>input {
+        position: absolute;
+        top: -100px;
+        visibility: hidden;
+    }
+
+    .rate:not(:checked)>label {
+        width: 1em;
+        float: right;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+    }
+
+    .rate:not(:checked)>label:before {
+        content: '★ ';
+    }
+
+    .rate>input:checked~label {
+        color: color.$primary-color;
+    }
+
+    .rate:not(:checked)>label:hover,
+    .rate:not(:checked)>label:hover~label {
+        color: color.$primary-color;
+    }
+
+    .rate>input:checked+label:hover,
+    .rate>input:checked+label:hover~label,
+    .rate>input:checked~label:hover,
+    .rate>input:checked~label:hover~label,
+    .rate>label:hover~input:checked~label {
+        color: color.$primary-color;
+    }
+}

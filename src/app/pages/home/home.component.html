@@ -1,0 +1,147 @@
+<div *ngIf="loading">
+    <app-page-loading></app-page-loading>
+</div>
+
+<section class="home-page">
+    <section class="home-slider">
+        <div class="container-fluid h-100 px-4">
+            <div class="row h-100 d-flex align-items-center justify-content-center">
+                <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
+                    <div class="home-slider-info">
+                        <h1>Hi,We do not cook, we create your emotions! </h1>
+                        <p>We have a proper passion for cooking. Love is the secret ingredient that makes all our meals
+                            taste better and magical.</p>
+                        <div class="home-slider-buttons">
+                            <a href="#" routerLink="/contact-us">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    style="fill: rgba(0, 0, 0, 1);">
+                                    <path
+                                        d="M12.006 2.007a9.927 9.927 0 0 0-7.071 2.922c-3.898 3.899-3.898 10.243 0 14.142 1.885 1.885 4.396 2.923 7.071 2.923s5.187-1.038 7.071-2.923c3.898-3.898 3.898-10.242 0-14.142a9.928 9.928 0 0 0-7.071-2.922zm5.657 15.649c-1.507 1.507-3.517 2.337-5.657 2.337s-4.15-.83-5.657-2.337c-3.118-3.119-3.118-8.194 0-11.313 1.507-1.507 3.516-2.336 5.657-2.336s4.15.829 5.657 2.336c3.118 3.119 3.118 8.194 0 11.313z">
+                                    </path>
+                                    <path d="m11.467 11.125-3.214 3.214 1.414 1.414 3.214-3.214 2.125 2.124V9H9.343z">
+                                    </path>
+                                </svg>
+                                contact us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 col-xl-6 col-sm-12">
+                    <div class="home-slider-images">
+                        <div class="img1">
+                            <img src="./assets/images/home-page/img1.svg" alt="home img">
+                        </div>
+                        <div class="img2">
+                            <img src="./assets/images/home-page/img1.png" alt="home img">
+                        </div>
+                        <div class="img3">
+                            <img src="./assets/images/home-page/img3.png" alt="home img">
+                        </div>
+                        <div class="drinks">
+                            <div class="drink-info drink-info1">
+                                <p>🥰Um-mm...</p>
+                            </div>
+
+                            <div class="drink-info drink-info2">
+                                <p> Sooooo delicious!😋</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section class="our-story ">
+    <div class="container m-auto px-2">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
+                <div class="our-story-img">
+                    <img src="./assets/images/home-page/our-story-bg.jpg" alt="our-story-img">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
+                <div class="title-section our-story-info">
+                    <h2>OUR STORY</h2>
+                    <div class="title-line"></div>
+                    <p>First and foremost I am a not chef, . Creating new dishes and flavor combinations that bring
+                        cooks and our restaurant guests pleasure is my job and I love it.</p>
+                    <span>wasfat</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="what-we-do">
+    <div class="bg-top"></div>
+    <div class="container mx-auto">
+        <div class="content">
+            <h2>There is no love more sincere than the love of food.</h2>
+        </div>
+    </div>
+    <div class="bg-buttom">
+        <img src="./assets/images/home-page/img1.svg" alt="home img">
+    </div>
+</section>
+
+<section class="top-rating">
+    <div class="container mx-auto">
+        <div class="title-section">
+            <h2>Most popular recipe</h2>
+            <div class="title-line"></div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo ipsam maiores, <br /> numquam beatae
+                perspiciatis nostrum.</p>
+        </div>
+        <div class="recipe-cards">
+            <div class="row">
+                <div *ngFor="let recipe of recipes; index as i" class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <app-master-card *ngIf="i < 4" [ratings]="recipeRatings" [data]="recipe" [type]="'recipe'"></app-master-card>
+                </div>
+            </div>
+            <div class="see-more">
+                <button routerLink="/users-recipes">
+                    see more recipes
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #fff;">
+                        <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="banner">
+    <h2>Mmm...! Your recipe will be great!🥰</h2>
+</section>
+
+<section class="top-rating">
+    <div class="container mx-auto">
+        <div class="title-section">
+            <h2>Most popular cocktail</h2>
+            <div class="title-line"></div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo ipsam maiores, <br /> numquam beatae
+                perspiciatis nostrum.</p>
+        </div>
+        <div class="recipe-cards">
+            <div class="row">
+                <div *ngFor="let cocktail of cocktails; index as i" class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <app-master-card *ngIf="i < 4" [ratings]="cocktailRatings" [data]="cocktail" [type]="'cocktail'"></app-master-card>
+                </div>
+            </div>
+            <div class="see-more">
+                <button routerLink="/users-cocktails">
+                    see more cocktails
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #fff;">
+                        <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

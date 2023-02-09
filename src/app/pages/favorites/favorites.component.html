@@ -1,0 +1,34 @@
+<div *ngIf="loading">
+    <app-page-loading></app-page-loading>
+</div>
+
+<section class="favorites-page">
+    <h2>my favorites</h2>
+    <p>We have a proper passion for cooking. Love is the secret ingredient that makes all our meals taste better and
+        magical.</p>
+    <div class="container mx-auto">
+        <div class="search-box d-flex">
+            <input #searchValue type="text" placeholder="Search..." (keyup)="checkSearch(searchValue.value)">
+            <button (click)="search(searchValue.value)">search</button>
+        </div>
+        <div class="filters">
+            <div class="filter-item">
+                <button (click)="showRecipesAndCocktails()">all</button>
+                <button (click)="showRecipes()">recipes</button>
+                <button (click)="showCocktails()">cocktails</button>
+            </div>
+        </div>
+        <div class="row">
+            <ng-template *ngIf="recipe" ngFor let-recipe [ngForOf]="filteredRecipes">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <app-favorite-card [data]="recipe" [type]="'recipe'"></app-favorite-card>
+                </div>
+            </ng-template>
+            <ng-template *ngIf="cocktail" ngFor let-cocktail [ngForOf]="filteredCocktails">
+                <div *ngIf="cocktail" class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <app-favorite-card [data]="cocktail" [type]="'cocktail'"></app-favorite-card>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "wasfat-ff73d",
+    "wasfat": "wasfat-9a8cf"
+  },
+  "targets": {
+    "wasfat-75d3a": {
+      "hosting": {
+        "wasfat": [
+          "wasfat-75d3a"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

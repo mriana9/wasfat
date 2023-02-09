@@ -1,0 +1,70 @@
+<div class="card-item">
+    <div class="recipe-item-img">
+        <img *ngIf="data.title" src="./assets/images/menu/3.jpg" alt="recipe-img">
+        <img *ngIf="data.name" src="./assets/images/menu/6.jpg" alt="recipe-img">
+    </div>
+    <div class="recipe-item-info">
+        <div class="d-flex justify-content-between align-items-center me-1">
+            <div class="w-100">
+                <h2 class="title">{{ data.title }}{{ data.name }}</h2>
+            </div>
+            <div>
+                <!-- <app-favorite></app-favorite> -->
+            </div>
+        </div>
+
+        <div *ngIf="data.servings" class="description">
+            <div>
+                <h3 class="p-0 m-0">Servings</h3>
+                <p class="p-0 m-0 mb-3">
+                    {{ data.servings }}
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="description">
+            <h3 class="p-0 m-0">Ingredients</h3>
+            <div>
+                <p *ngFor="let ingredient of data.ingredients" class="p-0 m-0 mb-0">
+                    {{ ingredient }}
+                </p>
+            </div>
+
+        </div>
+
+        <div class="description">
+            <h3 class="p-0 mt-3">Instructions</h3>
+            <div>
+                <p class="p-0 m-0 mb-3">
+                    {{ data.instructions }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <div *ngIf="comments">
+            <h3>{{ comments.length }} comments</h3>
+        </div>
+        <div *ngIf="!comments">
+            <h3>No comments</h3>
+        </div>
+    </div>
+    <app-card-comment *ngFor="let comment of comments" [data]="comment"></app-card-comment>
+    <hr>
+    <div *ngIf="isLoggedIn == true" class="comment-form">
+        <h3>Post Comment</h3>
+        <div class="comment-form-box">
+            <form [formGroup]="commentForm" (ngSubmit)="addNewComment()">
+                <div class="input-box">
+                    <textarea formControlName="comment" placeholder=" your comment"></textarea>
+                </div>
+                <div class="send-box">
+                    <button [disabled]="commentForm.invalid">send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="card-item">
+    <div class="img_flip img_flip-hor d-flex justify-content-center align-items-center">
+        <app-icon-loading *ngIf="!imageUrl"></app-icon-loading>
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="menu-img">
+        <div class="content">
+            <app-favorite [data]="data" [type]="type"></app-favorite>
+            <a routerLink="{{path}}" *ngIf="type=='recipe'">{{ data?.title }}</a>
+            <a routerLink="{{path}}" *ngIf="type=='cocktail'">{{ data?.name }}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,CAAA;EACC,MAAM,EAAE,OAAO;CAClB",
+    "sources": [
+        "favorite.component.scss"
+    ],
+    "names": [],
+    "file": "favorite.component.css"
+}

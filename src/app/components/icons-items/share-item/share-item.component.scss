@@ -1,0 +1,76 @@
+@use '../../../../styles.scss' as color;
+
+svg {
+    cursor: pointer;
+}
+
+.closeShareBox {
+    cursor: pointer;
+
+    &:hover {
+        transition: 1s;
+        transform: scale(1.2);
+        border-radius: 4px;
+        background-color: rgb(255, 173, 173);
+    }
+}
+
+.msg-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.share-msg-box {
+    .user-list {
+        width: 300px;
+        height: 400px;
+        margin: auto;
+        padding: 15px;
+        overflow: hidden;
+        animation: showShareBox ease-in-out 1s;
+        background-color: #fff;
+        text-transform: capitalize;
+
+        h2 {
+            font-size: 24px;
+            padding: 10px 0px;
+        }
+
+        .input-search {
+            width: 100%;
+            padding: 5px 10px;
+            outline: none;
+            caret-color: color.$primary-color;
+
+            &:focus {
+                border: 1px solid color.$primary-color;
+            }
+        }
+
+        ul {
+            width: 100%;
+            max-height: 205px;
+            overflow-y: scroll;
+            margin-top: 5px;
+            padding-bottom: 30px;
+
+            &::-webkit-scrollbar {
+                width: 3px;
+                border-radius: 0px;
+                background-color: #d5d5d5;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: color.$primary-color;
+            }
+        }
+    }
+}

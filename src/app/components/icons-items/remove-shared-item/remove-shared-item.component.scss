@@ -1,0 +1,58 @@
+@use '../../../../styles.scss' as color;
+
+.msg-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+svg {
+    cursor: pointer;
+}
+
+.delete-msg-box {
+    .msg-content {
+        width: 300px;
+        height: 180px;
+        padding: 20px;
+        text-align: center;
+        animation: showDeleteBox ease-in-out 1s;
+        text-transform: capitalize;
+        background-color: #fff;
+
+        h3 {
+            line-height: 100%;
+            font-size: 28px;
+            font-weight: 500;
+            color: #2f2f32;
+            letter-spacing: 2px;
+        }
+
+        p {
+            color: #6F6F87;
+            padding-bottom: 25px;
+        }
+
+        .msg-buttons {
+            display: flex;
+
+            button {
+                border: none;
+                width: 100px;
+                margin: auto;
+                padding: 5px 10px;
+                color: #fff;
+                text-transform: capitalize;
+                background-color: color.$primary-color;
+
+            }
+        }
+    }
+}

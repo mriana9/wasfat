@@ -1,0 +1,48 @@
+@use '../../../styles.scss' as color;
+
+.recipe-item-details {
+    .page-banner {
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 100% 100%;
+        background-image: linear-gradient(rgba(220, 175, 42, 0.7), rgba(251, 222, 91, 0.5)), url(../../../assets/images/menu/2.jpg);
+
+        h2 {
+            color: #fff;
+            font-size: 66px;
+            text-transform: capitalize;
+        }
+    }
+
+    .recipe-card {
+        .card-border {
+            padding: 20px;
+            text-transform: capitalize;
+            border: 1px solid #ededed;
+        }
+    }
+
+    .page-title {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        margin: 20px 0px;
+
+        a {
+            color: #000;
+
+            &:hover {
+                color: color.$primary-color;
+            }
+        }
+
+        span {
+            padding: 0px 5px;
+            color: #d5d5d5;
+        }
+    }
+}

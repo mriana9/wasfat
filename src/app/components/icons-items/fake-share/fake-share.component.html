@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" (click)="showLoginPopup()" style="fill: #666">
+    <path
+        d="M11 7.05V4a1 1 0 0 0-1-1 1 1 0 0 0-.7.29l-7 7a1 1 0 0 0 0 1.42l7 7A1 1 0 0 0 11 18v-3.1h.85a10.89 10.89 0 0 1 8.36 3.72 1 1 0 0 0 1.11.35A1 1 0 0 0 22 18c0-9.12-8.08-10.68-11-10.95zm.85 5.83a14.74 14.74 0 0 0-2 .13A1 1 0 0 0 9 14v1.59L4.42 11 9 6.41V8a1 1 0 0 0 1 1c.91 0 8.11.2 9.67 6.43a13.07 13.07 0 0 0-7.82-2.55z">
+    </path>
+</svg>
+
+
+<section class="popup" *ngIf="addLoginPopup">
+    <div class="login-form">
+        <h2>Welcome</h2>
+        <div [hidden]="loginButtonLoading">
+            <svg xmlns="http://www.w3.org/2000/svg" class="closeShareBox" width="24" height="24" (click)="closeLoginBox()"
+                style="fill: #DA0037;">
+                <path
+                    d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z">
+                </path>
+            </svg>
+        </div>
+        <p>Please Login to your account</p>
+        <form [formGroup]="loginForm">
+            <div class="input-box">
+                <div class="input-flied">
+                    <label for="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:  #F7BA56;">
+                            <path
+                                d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input formControlName="email" type="email" name="" placeholder="your email " required>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <div class="input-flied">
+                    <label for="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #F7BA56;">
+                            <path
+                                d="M14 12c-1.095 0-2-.905-2-2 0-.354.103-.683.268-.973C12.178 9.02 12.092 9 12 9a3.02 3.02 0 0 0-3 3c0 1.642 1.358 3 3 3 1.641 0 3-1.358 3-3 0-.092-.02-.178-.027-.268-.29.165-.619.268-.973.268z">
+                            </path>
+                            <path
+                                d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 12c-5.351 0-7.424-3.846-7.926-5C4.578 10.842 6.652 7 12 7c5.351 0 7.424 3.846 7.926 5-.504 1.158-2.578 5-7.926 5z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input formControlName="password" type="password" name="" placeholder="your password " required>
+                </div>
+                <span *ngIf="this.errorMessage" class="msg-error">
+                    {{this.errorMessage}}
+                </span>
+            </div>
+
+
+            <div class="form-btn">
+                <button [disabled]="loginForm.invalid || loginButtonLoading" (click)="login()" type="submit">
+                    <app-icon-loading *ngIf="loginButtonLoading"></app-icon-loading>
+                    login
+                </button>
+            </div>
+            <p>Don't Have An Account? <a (click)="showRegisterPopup()">Register</a></p>
+        </form>
+    </div>
+</section>
+
+<section class="popup" *ngIf="addRegisterPopup">
+    <div class="register-form">
+        <h2>welcome</h2>
+        <div [hidden]="registerButtonLoading">
+            <svg xmlns="http://www.w3.org/2000/svg" class="closeShareBox" width="24" height="24"
+                (click)="closeRegisterBox()" style="fill: #DA0037;">
+                <path
+                    d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z">
+                </path>
+            </svg>
+        </div>
+        <p>Please create your account</p>
+        <form [formGroup]="registerForm">
+            <div class="input-box">
+                <div class="input-flied">
+                    <label for="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #F7BA56;">
+                            <path
+                                d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input formControlName="firstName" type="text" name="" placeholder="first name " required>
+                </div>
+                <span *ngIf="getFirstNameControl()?.invalid && getFirstNameControl()?.touched" class="msg-error">
+                    {{ getFirstNameControl()?.errors?.['required'] ? 'first name is required' : '' }}
+                    {{ getFirstNameControl()?.errors?.['minlength'] ? 'first name must be at least 2 characters' : '' }}
+                </span>
+            </div>
+
+            <div class="input-box">
+                <div class="input-flied">
+                    <label for="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #F7BA56;">
+                            <path
+                                d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input formControlName="lastName" type="text" name="" placeholder="last name " required>
+                </div>
+                <span *ngIf="getLastNameControl()?.invalid && getLastNameControl()?.touched" class="msg-error">
+                    {{ getLastNameControl()?.errors?.['required'] ? 'last name is required' : '' }}
+                    {{ getLastNameControl()?.errors?.['minlength'] ? 'last name must be at least 2 characters' : '' }}
+                </span>
+            </div>
+
+            <div class="input-box gender-box">
+                <div class="input-flied">
+                    <div class="form-check d-flex align-items-end">
+                        <input formControlName="gender" type="radio" name="gender" value="1">
+                        <label for="female"> female </label>
+                    </div>
+                    <div class="form-check d-flex align-items-end mx-4">
+                        <input formControlName="gender" type="radio" name="gender" value="0">
+                        <label for="male"> male </label>
+                    </div>
+                </div>
+                <span *ngIf="getGenderControl()?.invalid && getGenderControl()?.touched" class="msg-error">
+                    {{ getGenderControl()?.errors?.['required'] ? 'gender is required' : '' }}
+                </span>
+            </div>
+
+            <div class="input-box">
+                <div class="input-flied">
+                    <label for="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill:  #F7BA56;">
+                            <path
+                                d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input formControlName="email" type="email" name="" placeholder="your email " required>
+                </div>
+                <span *ngIf="getEmailControl()?.invalid && getEmailControl()?.touched" class="msg-error">
+                    {{ getEmailControl()?.errors?.['required'] ? 'email is required' : '' }}
+                    {{ getEmailControl()?.errors?.['email'] ? 'must be vaild email' : '' }}
+                </span>
+                <span *ngIf="this.errorMessage" class="msg-error">
+                    {{this.errorMessage}}
+                </span>
+            </div>
+
+            <div class="input-box">
+                <div class="input-flied">
+                    <label for="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #F7BA56;">
+                            <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path>
+                            <path
+                                d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input formControlName="DOB" type="date" name="" placeholder="your data of birth " required>
+                </div>
+                <span *ngIf="getDOBControl()?.invalid && getDOBControl()?.touched" class="msg-error">
+                    {{ getDOBControl()?.errors?.['required'] ? 'Date Of Birth is required' : '' }}
+                </span>
+            </div>
+
+            <div class="input-box">
+                <div class="input-flied">
+                    <label for="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #F7BA56;">
+                            <path
+                                d="M14 12c-1.095 0-2-.905-2-2 0-.354.103-.683.268-.973C12.178 9.02 12.092 9 12 9a3.02 3.02 0 0 0-3 3c0 1.642 1.358 3 3 3 1.641 0 3-1.358 3-3 0-.092-.02-.178-.027-.268-.29.165-.619.268-.973.268z">
+                            </path>
+                            <path
+                                d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 12c-5.351 0-7.424-3.846-7.926-5C4.578 10.842 6.652 7 12 7c5.351 0 7.424 3.846 7.926 5-.504 1.158-2.578 5-7.926 5z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input formControlName="password" type="password" name="" id="" placeholder="your password "
+                        required>
+                </div>
+                <span *ngIf="getPasswordControl()?.invalid && getPasswordControl()?.touched" class="msg-error">
+                    {{ getPasswordControl()?.errors?.['required'] ? 'password is required' : '' }}
+                    {{ getPasswordControl()?.errors?.['minlength'] ? 'password must be at least 6 characters' : '' }}
+                    {{ getPasswordControl()?.errors?.['maxlength'] ? 'password must be less than 20 characters' : '' }}
+                </span>
+            </div>
+
+            <div class="form-btn">
+                <button [disabled]="registerForm.invalid || registerButtonLoading" type="submit" (click)="addUser()">
+                    <app-icon-loading *ngIf="registerButtonLoading"></app-icon-loading>
+                    register
+                </button>
+                <p>Already Have An Account? <a (click)="showLoginPopup()">Login</a></p>
+            </div>
+        </form>
+    </div>
+</section>

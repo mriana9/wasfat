@@ -1,0 +1,70 @@
+@use '../../../../styles.scss' as color;
+
+.recipe-card-box {
+    margin: 10px 5px;
+    min-height: max-content;
+    height: 500px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+
+    .card-img {
+        height: 200px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            &:hover {
+                transition: 2s;
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    .card-info {
+        border-radius: 8px;
+
+        .card-title {
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 10px 10px;
+            position: relative;
+            justify-content: space-between;
+
+            a {
+                color: #000;
+                font-size: 20px;
+            }
+
+            svg {
+                border-radius: 50%;
+                fill: #fff;
+                background-color: color.$primary-color;
+                position: absolute;
+                top: -10px;
+                right: 20px;
+            }
+
+            a {
+                font-size: 20px;
+                font-weight: 500;
+                color: #2f2f32;
+
+                &:hover {
+                    color: color.$primary-color;
+                }
+            }
+        }
+
+        .card-description {
+            p {
+                color: #6F6F87;
+                padding: 15px 10px;
+            }
+        }
+    }
+}

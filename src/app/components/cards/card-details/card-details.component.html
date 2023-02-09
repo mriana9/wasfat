@@ -1,0 +1,255 @@
+<div class="card-item">
+    <div class="recipe-item-img d-flex justify-content-center align-items-center">
+        <app-icon-loading *ngIf="!imageUrl"></app-icon-loading>
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="recipe-img">
+    </div>
+    <div class="recipe-item-info">
+        <div class="d-flex justify-content-between align-items-center me-1" *ngIf="type == 'recipe'">
+            <div class="w-100">
+                <h2 *ngIf="!editRecipeInputTitle" class="title">
+                    {{ data?.title }}
+                    <svg *ngIf="isUserCard" xmlns="http://www.w3.org/2000/svg" (click)="showEditRecipeInputTitle()"
+                        width="24" height="24" style="fill: rgb(79, 193, 245);">
+                        <path
+                            d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z">
+                        </path>
+                        <path
+                            d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
+                        </path>
+                    </svg>
+                </h2>
+                <div *ngIf="editRecipeInputTitle" class="w-100 d-flex my-2">
+                    <input [disabled]="recipeTitleLoading" #title value="{{data?.title}}" type="text"
+                        class="editInputTitle w-100">
+                    <button [disabled]="recipeTitleLoading" class="d-flex" (click)="updateTitle(title.value)">
+                        <app-icon-loading *ngIf="recipeTitleLoading"></app-icon-loading>
+                        save
+                    </button>
+                </div>
+            </div>
+            <div class="d-flex">
+                <app-favorite *ngIf="data && this.auth.userID" [data]="data" [type]="type"></app-favorite>
+                <app-fake-favorite *ngIf="!this.auth.userID"></app-fake-favorite>
+                <app-share-item *ngIf="this.auth.userID" [data]="data" [type]="type"></app-share-item>
+                <app-fake-share *ngIf="!this.auth.userID"></app-fake-share>
+                <app-remove-shared-item *ngIf="category != 'favorite' && isUserCard == false && this.auth.userID"
+                    [data]="data" [type]="type"></app-remove-shared-item>
+                <app-delete-item *ngIf="isUserCard == true" [data]="data" [type]="type"></app-delete-item>
+            </div>
+        </div>
+
+        <div *ngIf="type == 'cocktail'" class="d-flex justify-content-between align-items-center me-1">
+            <h2 *ngIf="!editCocktailInputTitle" class="title">
+                {{ data?.name }}
+                <svg *ngIf="isUserCard" xmlns="http://www.w3.org/2000/svg" (click)="showEditCocktailInputTitle()"
+                    width="24" height="24" style="fill: rgb(79, 193, 245);">
+                    <path
+                        d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z">
+                    </path>
+                    <path
+                        d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
+                    </path>
+                </svg>
+            </h2>
+            <div *ngIf="editCocktailInputTitle" class="d-flex my-2 w-100">
+                <input [disabled]="cocktailTitleLoading" #title value="{{data?.name}}" type="text"
+                    class="editInputTitle w-100">
+                <button [disabled]="cocktailTitleLoading" class="d-flex" (click)="updateTitle(title.value)">
+                    <app-icon-loading *ngIf="cocktailTitleLoading"></app-icon-loading>
+                    save
+                </button>
+            </div>
+            <div class="d-flex">
+                <app-favorite *ngIf="data && this.auth.userID" [data]="data" [type]="type"></app-favorite>
+                <app-fake-favorite *ngIf="!this.auth.userID"></app-fake-favorite>
+                <app-share-item *ngIf="this.auth.userID" [data]="data" [type]="type"></app-share-item>
+                <app-fake-share *ngIf="!this.auth.userID"></app-fake-share>
+                <app-remove-shared-item *ngIf="category != 'favorite' && isUserCard == false && this.auth.userID"
+                    [data]="data" [type]="type"></app-remove-shared-item>
+                <app-delete-item *ngIf="isUserCard == true" [data]="data" [type]="type"></app-delete-item>
+            </div>
+        </div>
+
+        <div class="description">
+            <div *ngIf="type == 'recipe'">
+                <h3 class="p-0 m-0">Servings</h3>
+                <p *ngIf="!editRecipeInputServings" class="p-0 m-0 mb-3">
+                    {{ data?.servings }}
+                    <svg *ngIf="isUserCard" xmlns="http://www.w3.org/2000/svg" (click)="showEditRecipeInputServings()"
+                        width="24" height="24" style="fill: rgb(79, 193, 245);">
+                        <path
+                            d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z">
+                        </path>
+                        <path
+                            d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
+                        </path>
+                    </svg>
+                </p>
+            </div>
+            <div class="my-2 w-100" *ngIf="editRecipeInputServings">
+                <textarea [disabled]="recipeServingsLoading" #servings value="{{data?.servings}}"
+                    class="w-100"></textarea>
+                <button [disabled]="recipeServingsLoading" class="d-flex" (click)="updateServings(servings.value)">
+                    <app-icon-loading *ngIf="recipeServingsLoading"></app-icon-loading>
+                    save
+                </button>
+            </div>
+        </div>
+
+
+
+        <div class="description">
+            <h3 class="p-0 m-0">Ingredients</h3>
+            <div *ngIf="type == 'recipe'">
+                <p *ngIf="!editRecipeInputIngredients" class="p-0 m-0 mb-3">
+                    {{ data?.ingredients }}
+                    <svg *ngIf="isUserCard" xmlns="http://www.w3.org/2000/svg"
+                        (click)="showEditRecipeInputIngredients()" width="24" height="24"
+                        style="fill: rgb(79, 193, 245);">
+                        <path
+                            d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z">
+                        </path>
+                        <path
+                            d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
+                        </path>
+                    </svg>
+                </p>
+                <div class="my-2 w-100" *ngIf="editRecipeInputIngredients">
+                    <textarea [disabled]="recipeIngredientsLoading" #ingredients value="{{data?.ingredients}}"
+                        class="w-100"></textarea>
+                    <button [disabled]="recipeIngredientsLoading" class="d-flex "
+                        (click)="updateIngredients(ingredients.value)">
+                        <app-icon-loading *ngIf="recipeIngredientsLoading"></app-icon-loading>
+                        save
+                    </button>
+                </div>
+            </div>
+
+            <div *ngIf="type == 'cocktail'">
+                <p *ngIf="!editCocktailInputIngredients" class="p-0 m-0 mb-3">
+                    <ng-template ngFor let-ingredient [ngForOf]="data?.ingredients" let-i="index">
+                        <p class="p-0">{{i+1}}-{{ingredient}}</p>
+                    </ng-template>
+                    <svg *ngIf="isUserCard" xmlns="http://www.w3.org/2000/svg"
+                        (click)="showEditCocktailInputIngredients()" width="24" height="24"
+                        style="fill: rgb(79, 193, 245);">
+                        <path
+                            d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z">
+                        </path>
+                        <path
+                            d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
+                        </path>
+                    </svg>
+                </p>
+                <div class="my-2" *ngIf="editCocktailInputIngredients">
+                    <form [formGroup]="ingredientsForm" (ngSubmit)="updateIngredients()">
+                        <div formGroupName="ingredients">
+                            <div *ngFor="let ingredient of getIngredientsFormArray(); index as i">
+                                <div [formGroup]="ingredient" class="input-box d-flex w-100 align-items-center mt-1">
+                                    <input formControlName="ingredients" class="w-100" type="text"
+                                        placeholder="enter ingredients...">
+                                    <div class="d-flex align-items-center">
+                                        <div [hidden]="cocktailIngredientsLoading">
+                                            <svg xmlns="http://www.w3.org/2000/svg" (click)="addNewIngredientItem()"
+                                                width="24" height="24" style="fill: #666">
+                                                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                                            </svg>
+                                        </div>
+                                        <div [hidden]="cocktailIngredientsLoading">
+                                            <svg xmlns="http://www.w3.org/2000/svg" (click)="removeIngredientItem(i)"
+                                                width="24" height="24" style="fill: #666;transform: msFilter;">
+                                                <path d="M5 11h14v2H5z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button [disabled]="cocktailIngredientsLoading" class="d-flex mt-1">
+                            <app-icon-loading *ngIf="cocktailIngredientsLoading"></app-icon-loading>
+                            save
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="description">
+            <h3 class="p-0 m-0">Instructions</h3>
+            <div *ngIf="type == 'recipe'">
+                <p *ngIf="!editRecipeInputInstructions" class="p-0 m-0 mb-3">
+                    {{ data?.instructions }}
+                    <svg *ngIf="isUserCard" xmlns="http://www.w3.org/2000/svg"
+                        (click)="showEditRecipeInputInstructions()" width="24" height="24"
+                        style="fill: rgb(79, 193, 245);">
+                        <path
+                            d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z">
+                        </path>
+                        <path
+                            d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
+                        </path>
+                    </svg>
+                </p>
+                <div class="my-2 w-100" *ngIf="editRecipeInputInstructions">
+                    <textarea [disabled]="recipeInstructionsLoading" #instructions value="{{data?.instructions}}"
+                        class="w-100"></textarea>
+                    <button [disabled]="recipeInstructionsLoading" class="d-flex"
+                        (click)="updateInstructions(instructions.value)">
+                        <app-icon-loading *ngIf="recipeInstructionsLoading"></app-icon-loading>
+                        save
+                    </button>
+                </div>
+            </div>
+
+            <div *ngIf="type == 'cocktail'">
+                <p *ngIf="!editCocktailInputInstructions" class="p-0 m-0 mb-3">
+                    {{ data?.instructions }}
+                    <svg *ngIf="isUserCard" xmlns="http://www.w3.org/2000/svg"
+                        (click)="showEditCocktailInputInstructions()" width="24" height="24"
+                        style="fill: rgb(79, 193, 245);">
+                        <path
+                            d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z">
+                        </path>
+                        <path
+                            d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
+                        </path>
+                    </svg>
+                </p>
+                <div class="my-2 w-100" *ngIf="editCocktailInputInstructions">
+                    <textarea [disabled]="cocktailInstructionsLoading" #instructions value="{{data?.instructions}}"
+                        class="w-100"></textarea>
+                    <button [disabled]="cocktailInstructionsLoading" class="d-flex"
+                        (click)="updateInstructions(instructions.value)">
+                        <app-icon-loading *ngIf="cocktailInstructionsLoading"></app-icon-loading>
+                        save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div *ngIf="comments">
+        <h3>{{ comments.length }} comments</h3>
+    </div>
+    <div *ngIf="!comments">
+        <h3>No comments</h3>
+    </div>
+    <app-card-comment *ngFor="let comment of comments" [data]="comment" class="my-1"></app-card-comment>
+    <hr>
+    <div *ngIf="isLoggedIn == false">
+        <p>Please <app-fake-login-button></app-fake-login-button> to post a comment. </p>
+    </div>
+    <div *ngIf="isLoggedIn == true" class="comment-form">
+        <h3>Post Comment</h3>
+        <div class="comment-form-box">
+            <form [formGroup]="commentForm" (ngSubmit)="addNewComment()">
+                <div class="input-box">
+                    <textarea formControlName="comment" placeholder=" your comment"></textarea>
+                </div>
+                <div class="send-box">
+                    <button [disabled]="commentForm.invalid">send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

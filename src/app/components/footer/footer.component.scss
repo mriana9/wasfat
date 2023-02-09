@@ -1,0 +1,49 @@
+@use '../../../styles.scss' as color;
+
+footer {
+    width: 100%;
+    padding: 20px;
+    background-color: #2f2f32;
+    bottom: 0;
+    left: 0;
+
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        .footer-logo {
+            max-width: 180px;
+        }
+
+        a {
+            color: #d5d5d5;
+
+            &:hover {
+                color: color.$primary-color;
+            }
+        }
+
+        p {
+            color: #d5d5d5;
+        }
+
+        h2 {
+            color: #d5d5d5;
+            padding: 15px 0px;
+            text-transform: capitalize;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+
+            li {
+                list-style: none;
+                margin: 10px;
+            }
+        }
+    }
+}

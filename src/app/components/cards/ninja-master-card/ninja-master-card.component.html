@@ -1,0 +1,15 @@
+<div class="recipe-card-box">
+    <div class="card-img">
+        <img *ngIf="type == 'recipe'" src="./assets/images/menu/3.jpg" alt="recipe-img">
+        <img *ngIf="type == 'cocktail'" src="./assets/images/menu/6.jpg" alt="recipe-img">
+    </div>
+    <div class="card-info">
+        <div class="card-title">
+            <a (click)="navigate()" *ngIf="type == 'recipe'">{{data?.title?.substring(0 ,30)}}</a>
+            <a (click)="navigate()" *ngIf="type == 'cocktail'">{{data?.name?.substring(0 ,30)}}</a>
+        </div>
+        <div class="card-description">
+            <p>{{data?.instructions?.substring(0 ,110)}}</p>
+        </div>
+    </div>
+</div>

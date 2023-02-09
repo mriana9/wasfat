@@ -1,0 +1,354 @@
+@use '../../../styles.scss' as color;
+
+.home-slider {
+    height: 100vh;
+    padding-top: 50px;
+    text-transform: capitalize;
+
+    .home-slider-info {
+        h1 {
+            line-height: 100%;
+            font-size: 48px;
+            letter-spacing: -3px;
+            font-weight: 700;
+            color: #2f2f32;
+
+            &::first-letter {
+                color: color.$primary-color ;
+            }
+        }
+
+        p {
+            color: #6F6F87;
+            padding: 25px 0px;
+        }
+
+        .home-slider-buttons {
+            a {
+                color: #000;
+                padding: 8px 10px;
+
+                &:first-child {
+                    background-color: color.$primary-color;
+                }
+
+                &:last-child svg {
+                    border-radius: 50%;
+                    background-color: color.$primary-color;
+                }
+            }
+        }
+    }
+
+    .home-slider-images {
+        position: relative;
+
+        img {
+            width: 260px;
+            height: 260px;
+            animation-name: homeAnimate;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
+
+        }
+
+        .img2 img {
+            display: block;
+            position: absolute;
+            right: 100px;
+            top: -140px;
+        }
+
+        .img3 img {
+            display: block;
+            position: absolute;
+            right: 100px;
+            bottom: -140px;
+        }
+
+        .drinks {
+            display: block;
+
+            .drink-info {
+                height: 50px;
+                width: 200px;
+                display: flex;
+                position: absolute;
+                z-index: 2;
+                padding: 15px;
+                align-items: flex-end;
+                justify-content: center;
+                background-color: #fff;
+                border-radius: 14px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+            }
+
+            .drink-info1 {
+                left: 150px;
+                top: -80px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    right: 20%;
+                    bottom: -5px;
+                    transform: translate(-50%, -50%);
+                    transform: rotate(45deg);
+                    background-color: #fff;
+                    border-radius: 4px;
+                }
+
+                img {
+                    height: 100px;
+                    width: 100px;
+                }
+
+            }
+
+            .drink-info2 {
+                left: 100px;
+                bottom: -80px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    left: 8%;
+                    bottom: -5px;
+                    transform: translate(-50%, -50%);
+                    transform: rotate(45deg);
+                    background-color: #fff;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}
+
+.top-rating {
+    padding: 20px 0px;
+    background-color: #fafafa;
+}
+
+.title-section {
+    h2 {
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    .title-line {
+        width: 50px;
+        height: 5px;
+        background-color: color.$primary-color ;
+    }
+
+    p {
+        color: #6F6F87;
+        padding: 25px 0px;
+    }
+}
+
+.our-story {
+    .our-story-info {
+        padding-left: 20px;
+
+        img {
+            object-fit: cover;
+        }
+
+        span {
+            font-size: 44px;
+            font-weight: 600;
+            text-transform: capitalize;
+            font-family: 'Oooh Baby', cursive;
+        }
+    }
+
+    .our-story-img {
+        width: 95%;
+        height: 300px;
+        overflow: hidden;
+        background-color: #f5f5f5;
+
+
+        img {
+            width: 100%;
+            height: 100%;
+
+            &:hover {
+                transition: 2s;
+                transform: scale(1.2) rotate(5deg);
+            }
+        }
+    }
+}
+
+.what-we-do {
+    margin-top: 20px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+
+    h2 {
+        color: #2f2f32;
+        font-size: 88px;
+        line-height: 100%;
+        font-size: 48px;
+        letter-spacing: -3px;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    .bg-top {
+        width: 300px;
+        height: 300px;
+        left: 0;
+        top: 50px;
+        border-radius: 50%;
+        position: absolute;
+        opacity: 0.7;
+        z-index: -1;
+        background-color: color.$primary-color;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            right: -100px;
+            bottom: 0;
+            border-radius: 50%;
+            border: 1px solid color.$primary-color;
+        }
+    }
+
+    .bg-buttom {
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            padding: 15px;
+            position: absolute;
+            right: 0px;
+            bottom: 50px;
+            animation-name: homeAnimate;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
+            border: 1.5px solid color.$primary-color;
+        }
+    }
+}
+
+.see-more {
+    text-align: center;
+
+    button {
+        border: none;
+        color: #fff;
+        font-weight: 500;
+        padding: 10px 30px;
+        margin-top: 20px;
+        text-transform: uppercase;
+        background-color: color.$primary-color;
+    }
+}
+
+.banner {
+    height: 400px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../../assets/images/menu/4.jpg);
+
+
+    h2 {
+        font-size: 44px;
+        font-weight: 600;
+        color: #fff;
+        text-transform: capitalize;
+    }
+}
+
+@keyframes homeAnimate {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 1024px) {
+    .home-slider {
+        height: max-content;
+        margin-bottom: 50px;
+
+        .home-slider-info {
+            h1 {
+                font-size: 38px;
+                line-height: 50px;
+            }
+        }
+    }
+
+    .home-slider-images {
+
+        .img2 img,
+        .img3 img,
+        .drink-img1,
+        .drinks {
+            display: none !important;
+        }
+
+        .img1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .img1 img {
+            animation: none;
+        }
+    }
+
+    .our-story {
+        .our-story-img {
+            width: 100%;
+        }
+    }
+
+    .what-we-do {
+        height: min-content;
+        padding: 20px;
+        background-color: #f5f5f5;
+
+        h2 {
+            font-size: 28px;
+            letter-spacing: normal;
+        }
+
+        .bg-buttom,
+        .bg-top {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<button (click)="showAddCocktailForm()">add cocktail</button>
+
+<div class="msg-box add-recipe-box" *ngIf="addCocktailBox">
+    <div class="content">
+        <div class="d-flex justify-content-between">
+            <h2>welcome {{ currentUser?.firstName }},<br> let's start to make a new cocktail :</h2>
+            <div [hidden]="addButtonLoading">
+                <svg xmlns="http://www.w3.org/2000/svg" class="closeShareBox" width="24" height="24" (click)="closeBox()"
+                    style="fill: #DA0037;">
+                    <path
+                        d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="add-recipe-form">
+                    <form [formGroup]="cocktailForm">
+                        <div class="input-box">
+                            <input formControlName="name" type="text" placeholder="enter name...">
+                        </div>
+                        <div class="input-box">
+                            <input formControlName="image" type="file" (change)="uploadImage($event)"
+                                accept="*.png.jpg">
+                        </div>
+                        <div formGroupName="ingredients">
+                            <div *ngFor="let ingredient of getIngredientsArray(); index as i">
+                                <div [formGroup]="ingredient" class="input-box d-flex align-items-center">
+                                    <input formControlName="ingredientItem" type="text"
+                                        placeholder="enter ingredients...">
+                                    <div class="d-flex align-items-center">
+                                        <div [hidden]="addButtonLoading">
+                                            <svg xmlns="http://www.w3.org/2000/svg" (click)="addNewIngredientItem()"
+                                                class="mt-3" width="24" height="24" style="fill: #666">
+                                                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                                            </svg>
+                                        </div>
+                                        <div [hidden]="addButtonLoading">
+                                            <svg xmlns="http://www.w3.org/2000/svg" (click)="removeIngredientItem(i)"
+                                                class="mt-3" width="24" height="24" style="fill: #666;transform: msFilter;">
+                                                <path d="M5 11h14v2H5z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <textarea formControlName="instructions" placeholder="enter instructions..."></textarea>
+                        </div>
+                        <div class="button-box">
+                            <button [disabled]="cocktailForm.invalid || addButtonLoading" (click)="addNewCocktail()">
+                                <app-icon-loading *ngIf="addButtonLoading"></app-icon-loading>
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 add-recipe-bg">
+                <div>
+                    <img src="./assets/images/menu/10.png" class="add-recipe-img" alt="register-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

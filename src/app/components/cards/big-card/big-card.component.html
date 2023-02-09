@@ -1,0 +1,23 @@
+<div class="recipes-card">
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="recipes-card-img d-flex justify-content-center align-items-center">
+                <app-icon-loading *ngIf="!imageUrl"></app-icon-loading>
+                <img *ngIf="imageUrl" [src]="imageUrl" alt="menu-img">
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <div class="recipes-card-info">
+                <div class="d-flex justify-content-between">
+                    <a routerLink="{{path}}">{{ data?.title }}</a>
+                    <app-favorite [data]="data" [type]="type"></app-favorite>
+                </div>
+                <p>{{ data?.instructions.substring(0 ,100)}}</p>
+                <div class="recipes-card-icon">
+                    <app-delete-item [data]="data" [type]="type"></app-delete-item>
+                    <app-share-item [data]="data" [type]="type"></app-share-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

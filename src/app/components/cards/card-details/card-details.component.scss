@@ -1,0 +1,153 @@
+@use '../../../../styles.scss' as color;
+
+.card-item {
+    hr {
+        margin: 20px 0px;
+        border: 1px solid #ededed;
+    }
+
+    h3 {
+        padding-top: 15px;
+        font-size: 20px;
+    }
+
+    .recipe-item-img {
+        height: 400px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    input {
+        outline: none;
+        padding: 5px;
+        caret-color: color.$primary-color;
+        border: 1px solid #d5d5d5;
+
+        &::placeholder {
+            text-transform: capitalize;
+        }
+    }
+
+    .recipe-item-info {
+        h2 {
+            padding: 15px 0px;
+
+            svg {
+                visibility: hidden;
+                cursor: pointer;
+            }
+
+            &:hover svg {
+                visibility: visible;
+            }
+        }
+
+        .description {
+            p {
+                padding-top: 20px;
+                line-height: 30px;
+
+                svg {
+                    visibility: hidden;
+                    cursor: pointer;
+                }
+
+                &:hover svg {
+                    visibility: visible;
+                }
+            }
+
+            pre {
+                height: 200px;
+                height: max-content;
+                border: 1px solid #d5d5d5;
+            }
+        }
+
+        input.editInputTitle,
+        textarea {
+            padding: 6px 20px;
+            outline: none;
+            caret-color: color.$primary-color;
+            border: 1px solid #d5d5d5;
+            border-right: none;
+        }
+
+        button {
+            border: none;
+            padding: 5px;
+            color: #fff;
+            background-color: color.$primary-color ;
+        }
+    }
+
+
+    .comment-form {
+        .comment-form-box {
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #ededed;
+
+            .input-box {
+
+                textarea,
+                input {
+                    width: 100%;
+                    margin-top: 20px;
+                    padding: 8px 10px;
+                    outline: none;
+                    caret-color: color.$primary-color;
+                    border: 1px solid #d5d5d5;
+
+                    &::placeholder {
+                        text-transform: capitalize;
+                    }
+                }
+
+                textarea {
+                    height: 300px;
+                }
+            }
+
+            .send-box {
+                text-align: center;
+
+                button {
+                    border: none;
+                    color: #fff;
+                    padding: 10px 20px;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    background-color: color.$primary-color;
+                }
+            }
+        }
+    }
+}
+
+@keyframes showShareBox {
+    from {
+        transform: translateY(-500px);
+    }
+
+    to {
+        height: 400px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes showDeleteBox {
+    from {
+        transform: translateY(-500px);
+    }
+
+    to {
+        height: 180px;
+        transform: translateY(0);
+    }
+}          

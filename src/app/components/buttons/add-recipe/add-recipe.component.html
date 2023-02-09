@@ -1,0 +1,54 @@
+<button (click)="showAddRecipeForm()">add recipe</button>
+
+<div class="msg-box add-recipe-box" *ngIf="addRecipeBox">
+    <div class="content">
+        <div class="d-flex justify-content-between">
+            <h2>welcome {{ currentUser?.firstName }},<br> let's start to make a new recipe :</h2>
+            <div [hidden]="addButtonLoading">
+                <svg xmlns="http://www.w3.org/2000/svg" class="closeShareBox" width="24"
+                    height="24" (click)="closeBox()" style="fill: #DA0037;">
+                    <path
+                        d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="add-recipe-form">
+                    <form [formGroup]="recipeForm" ng-disabled="true">
+                        <div class="input-box">
+                            <input formControlName="title" type="text" placeholder="enter title...">
+                        </div>
+                        <div class="input-box">
+                            <input formControlName="servings" type="text" placeholder="enter servings...">
+                        </div>
+                        <div class="input-box">
+                            <input formControlName="image" type="file" (change)="uploadImage($event)"
+                                accept="*.png.jpg">
+                        </div>
+                        <div class="input-box">
+                            <textarea formControlName="ingredients" placeholder="Enter ingredients..."></textarea>
+                        </div>
+                        <div class="input-box">
+                            <textarea formControlName="instructions" placeholder="Enter instructions..."></textarea>
+                        </div>
+
+                        <div class="button-box">
+                            <button [disabled]="recipeForm.invalid || addButtonLoading" (click)="addRecipe()">
+                                <app-icon-loading *ngIf="addButtonLoading"></app-icon-loading>
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 add-recipe-bg">
+                <div>
+                    <img src="./assets/images/home-page/img1.svg" class="add-recipe-img" alt="register-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

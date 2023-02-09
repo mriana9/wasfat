@@ -1,0 +1,167 @@
+@use '../../../styles.scss' as color;
+
+.login-page {
+    overflow: hidden;
+    min-height: 100vh;
+
+    .bg-top {
+        width: 80vw;
+        height: 450px;
+        position: absolute;
+        top: -200px;
+        left: -150px;
+        transform: rotate(-10deg);
+        background-color: color.$primary-color ;
+        border-radius: 57% 43% 40% 60% / 71% 48% 52% 29%;
+    }
+
+    .bg-bottom {
+        width: 80vw;
+        height: 450px;
+        position: absolute;
+        left: -40px;
+        top: -100px;
+        z-index: -1;
+        border: 1px solid color.$primary-color;
+        border-radius: 57% 43% 40% 60% / 71% 48% 52% 29%;
+    }
+
+    .login-form {
+        width: 40vw;
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 12px;
+        text-align: center;
+        overflow: hidden;
+        text-transform: capitalize;
+        background-color: #fff;
+        transform: translate(-50%, -50%);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+        h2 {
+            line-height: 100%;
+            font-size: 48px;
+            letter-spacing: -3px;
+            font-weight: 500;
+            color: #2f2f32;
+            padding-bottom: 10px;
+            letter-spacing: 2px;
+
+            &::first-letter {
+                color: color.$primary-color;
+            }
+        }
+
+        p {
+            color: #6F6F87;
+            padding: 10px 0px;
+        }
+
+        form {
+            .input-box {
+                .input-flied {
+                    display: flex;
+                    align-items: flex-end;
+                    margin-top: 25px;
+
+                    input {
+                        width: 100%;
+                        padding-left: 10px;
+                        border: none;
+                        outline: none;
+                        color:#2f2f32;
+                        border-bottom: 1px solid #d7d7d7;
+
+                        &::placeholder {
+                            font-size: 14px;
+                            text-transform: capitalize;
+                        }
+
+                        &:focus {
+                            border-bottom: 1.2px solid color.$primary-color;
+                        }
+                    }
+
+                    label {
+                        font-family: 14px;
+                        padding-left: 10px;
+                        color: #6F6F87;
+                    }
+                }
+
+                .msg-error {
+                    width: 100%;
+                    display: inline-block;
+                    padding-left: 30px;
+                    font-size: 14px;
+                    letter-spacing: 0px;
+                    color: color.$msg-error;
+                    text-align: start !important;
+                    text-transform: capitalize;
+                }
+            }
+
+            .form-btn {
+                margin: 10px 0px;
+
+                button {
+                    border: none;
+                    padding: 10px 30px;
+                    color: #fff;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    background-color: color.$primary-color;
+                }
+            }
+
+        }
+
+        &::before {
+            content: '';
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: -5px;
+            bottom: -25px;
+            border-radius: 50%;
+            border: 1px solid color.$primary-color;
+        }
+    }
+
+    .login-bottom-img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        border-radius: 50%;
+        border: 1px solid color.$primary-color;
+
+        &::after {
+            content: '';
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: -50px;
+            bottom: 0;
+            opacity: 0.7;
+            border-radius: 50%;
+            z-index: -1;
+            background-color: color.$primary-color;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .bg-top,
+    .bg-bottom,
+    .login-bottom-img {
+        display: none !important;
+    }
+
+    .login-form {
+        min-width: 95%;
+    }
+}

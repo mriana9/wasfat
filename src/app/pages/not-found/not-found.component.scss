@@ -1,0 +1,60 @@
+@use '../../../styles.scss' as color;
+
+.not-found {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: capitalize;
+
+    img {
+        animation-name: homeAnimate;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+            line-height: 100%;
+            font-size: 120px;
+            font-weight: 700;
+            color: #2f2f32;
+        }
+    }
+
+    h3 {
+        font-size: 40px;
+        color: color.$primary-color;
+    }
+
+    p {
+        color: #6F6F87;
+        padding: 10px 0px;
+        font-size: 14px;
+    }
+
+    a {
+        color: color.$primary-color;
+
+        &:hover {
+            color: color.$primary-color;
+            border-bottom: 1px solid color.$primary-color;
+        }
+    }
+}
+
+@keyframes homeAnimate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

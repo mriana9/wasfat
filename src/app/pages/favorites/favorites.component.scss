@@ -1,0 +1,52 @@
+@use '../../../styles.scss' as color;
+
+.favorites-page {
+    min-height: 100vh;
+    padding-top: 70px;
+    text-align: center;
+    text-transform: capitalize;
+
+    h2 {
+        line-height: 100%;
+        font-size: 48px;
+        font-weight: 700;
+        color: #2f2f32;
+
+        &::first-letter {
+            color: color.$primary-color ;
+        }
+    }
+
+    p {
+        color: #6F6F87;
+        padding: 10px 0px;
+    }
+
+    .search-box {
+        margin: 20px auto;
+
+        input {
+            width: 100%;
+            outline: none;
+            padding: 8px 20px;
+            caret-color: color.$primary-color;
+            border: 1px solid #6F6F87;
+            border-right: none;
+        }
+    }
+
+    button {
+        border: none;
+        padding: 10px;
+        color: #fff;
+        text-transform: capitalize;
+        background-color: color.$primary-color;
+    }
+
+    .filter-item {
+        button {
+            width: 150px;
+            margin: 10px;
+        }
+    }
+}

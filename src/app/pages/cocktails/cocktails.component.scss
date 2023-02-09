@@ -1,0 +1,163 @@
+@use '../../../styles.scss' as color;
+
+.cocktails-page {
+    background-color: #eeeeee;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+
+    svg {
+        position: absolute;
+        bottom: -100px;
+    }
+
+    .cocktail-slider {
+        height: 90vh;
+        overflow: hidden;
+
+        .cocktail-slider-info {
+            position: absolute;
+            width: 40%;
+            top: 50%;
+            left: 40%;
+            padding: 20px;
+            transform: translate(-50%, -50%);
+
+            h2 {
+                line-height: 100%;
+                font-size: 66px;
+                font-weight: 700;
+                color: #2f2f32;
+
+                &::first-letter {
+                    color: color.$primary-color ;
+                }
+            }
+
+            p {
+                color: #6F6F87;
+                padding: 10px 0px;
+            }
+        }
+
+        .cocktail-slider-img {
+            position: absolute;
+            bottom: -20px;
+            z-index: 9;
+        }
+    }
+
+    .bg-right {
+        position: absolute;
+        right: 0;
+        top: 30%;
+    }
+}
+
+.cocktails-cards {
+    padding-top: 50px;
+
+    .search-box {
+        input {
+            width: 90%;
+            outline: none;
+            padding: 8px 20px;
+            caret-color: color.$primary-color;
+            border: 1px solid #6F6F87;
+            border-right: none;
+        }
+
+        button {
+            border: none;
+            padding: 10px;
+            color: #fff;
+            background-color: color.$primary-color;
+        }
+    }
+
+    .cocktail-items {
+        padding-top: 30px;
+
+        h2 {
+            line-height: 100%;
+            font-size: 44px;
+            letter-spacing: normal;
+            font-weight: 500;
+            color: #2f2f32;
+            text-align: center;
+            text-transform: uppercase;
+
+            &::first-letter {
+                color: color.$primary-color ;
+            }
+        }
+    }
+
+
+    .pagination {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .page-item {
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+
+            .page-link {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                font-weight: 500;
+                color: color.$primary-color;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                border: 1px solid color.$primary-color  !important;
+
+                &:hover {
+                    color: #fff;
+                    background-color: color.$primary-color;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .cocktails-page {
+        max-height: 70vh;
+
+        svg {
+            position: absolute;
+            bottom: -10px;
+        }
+
+        img {
+            display: none !important;
+        }
+
+        .cocktail-slider {
+            .cocktail-slider-img {
+                right: 0;
+
+                img {
+                    height: 200px;
+                    display: block !important;
+                }
+            }
+
+            .cocktail-slider-info {
+                width: 80%;
+
+                h2 {
+                    font-size: 44px !important;
+                }
+            }
+        }
+    }
+}

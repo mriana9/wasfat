@@ -1,0 +1,33 @@
+<div class="item-rating card-border">
+    <div class="d-flex justify-content-between">
+        <span class="item-category">{{ type }}</span>
+    </div>
+    <div class="item-icon">
+        <div class="d-flex">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #F7BA56">
+                <path
+                    d="M5 18v3.766l1.515-.909L11.277 18H16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h1zM4 8h12v8h-5.277L7 18.234V16H4V8z">
+                </path>
+                <path d="M20 2H8c-1.103 0-2 .897-2 2h12c1.103 0 2 .897 2 2v8c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2z">
+                </path>
+            </svg>
+            <p>{{ data?.length }} total rates</p>
+        </div>
+    </div>
+    <app-fake-rate *ngIf="isLoggedIn == false"></app-fake-rate>
+    <div *ngIf="isLoggedIn == true" class="rate">
+        <input type="radio" [checked]="rating == 5" id="star5" name="rate" value="5" (click)="addOrUpdateRating(5)" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" [checked]="rating == 4" id="star4" name="rate" value="4" (click)="addOrUpdateRating(4)" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" [checked]="rating == 3" id="star3" name="rate" value="3" (click)="addOrUpdateRating(3)" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" [checked]="rating == 2" id="star2" name="rate" value="2" (click)="addOrUpdateRating(2)" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" [checked]="rating == 1" id="star1" name="rate" value="1" (click)="addOrUpdateRating(1)" />
+        <label for="star1" title="text">1 star</label>
+    </div>
+    <div class="rate-average">
+        <p>({{getRatingAverage()}})</p>
+    </div>
+</div>

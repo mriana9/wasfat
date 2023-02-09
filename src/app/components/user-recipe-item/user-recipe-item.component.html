@@ -1,0 +1,90 @@
+<div *ngIf="loading">
+    <app-page-loading></app-page-loading>
+</div>
+
+<section class="recipe-page">
+    <div class="container-fluid h-100 mx-auto">
+        <div class="row h-100">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 left-side">
+                <div class="recipe-info px-5">
+                    <h2> top recipe</h2>
+                    <p>It’s a pity that the photo does not convey the taste!</p>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 right-side">
+                <div class="recipe-img">
+                    <img src="./assets/images/home-page/img1.png" alt="home-page-img">
+                </div>
+                <div class="circle-right"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="recipe-banners">
+    <div class="container mx-auto">
+        <div class="row">
+            <div class="col-xl-6 col-md-6 col-sm-12">
+                <div class="banner-box left-box">
+                    <img src="./assets/images/home-page/img1.png" height="180px" alt="home img">
+                    <img src="./assets/images/home-page/img4.png" class="bg-img" height="180px" alt="home img">
+
+                    <div class="title">
+                        <p>We Do Not Cook, We Create Your Emotions!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-6 col-sm-12">
+                <div class="banner-box right-box">
+                    <div class="title">
+                        <p>We Do Not Cook, We Create Your Emotions!</p>
+                    </div>
+                    <img src="./assets/images/home-page/img1.png" height="180px" alt="home img">
+                    <img src="./assets/images/home-page/img4.png" class="bg-img" height="180px" alt="home img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="recipes-cards">
+    <div class="container mx-auto">
+        <div class="search-box d-flex">
+            <input #searchValue type="text" placeholder="Search..." (keyup)="checkSearch(searchValue.value)">
+            <button (click)="search(searchValue.value)">search</button>
+        </div>
+        <div class="recipe-items">
+            <h2>most popular</h2>
+
+            <div class="row pt-5">
+                <div *ngFor="let recipe of pages[currentPage]" class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <app-master-card [ratings]="recipeRatings" [data]="recipe" [type]="'recipe'"></app-master-card>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="pages.length==0">
+            <p class="text-center">No data to show</p>
+        </div>
+        <div *ngIf="pages.length>0">
+            <nav aria-label="navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a [hidden]="currentPage == 0" class="page-link" (click)="prev()" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngFor="let page of pages; let i=index" class="page-item"><a class="page-link"
+                            (click)="showData(i)">{{i+1}}</a></li>
+                    <li class="page-item">
+                        <a [hidden]="currentPage == totalPages-1 || totalPages == 0" class="page-link" (click)="next()"
+                            aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>

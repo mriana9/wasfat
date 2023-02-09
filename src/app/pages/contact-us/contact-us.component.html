@@ -1,0 +1,76 @@
+<div *ngIf="loading">
+    <app-page-loading></app-page-loading>
+</div>
+
+<section class="contact-us-page ">
+    <div class="recipe-img-bg">
+        <img class="recipe-img" src="./assets/images/home-page/img2.svg" width="200px" alt="recipe-img">
+    </div>
+    <div class="contact-us ">
+        <div class="container m-auto">
+            <div class="row d-flex align-items-center">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="contact-us-info">
+                        <span>contact</span>
+                        <h2>Get in Touch with wasfat</h2>
+                        <p>We Have A Proper Passion For Cooking. Love Is The Secret Ingredient That Makes All Our Meals
+                            Taste Better And Magical.</p>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="contact-us-form m-auto">
+                        <img class="cocktail-img" src="./assets/images/contact-us/img1.png" alt="cocktail-img">
+                        <form [formGroup]="contactForm">
+                            <h3>send message</h3>
+                            <div class="input-box">
+                                <div class="input-flied">
+                                    <input formControlName="name" type="text" name="" placeholder="your name " required>
+                                </div>
+                                <span *ngIf="getNameControl()?.invalid && getNameControl()?.touched" class="msg-error">
+                                    {{ getNameControl()?.errors?.['required'] ? 'Name is required' : '' }}
+                                </span>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-flied">
+                                    <input formControlName="email" type="email" name="" placeholder="your email "
+                                        required>
+                                </div>
+                                <span *ngIf="getEmailControl()?.invalid && getEmailControl()?.touched"
+                                    class="msg-error">
+                                    {{ getEmailControl()?.errors?.['required'] ? 'Email is required' : '' }}
+                                    {{ getEmailControl()?.errors?.['email'] ? 'Invalid email address' : '' }}
+                                </span>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-flied">
+                                    <input formControlName="title" type="text" name="" placeholder="title" required>
+                                </div>
+                                <span *ngIf="getTitleControl()?.invalid && getTitleControl()?.touched"
+                                    class="msg-error">
+                                    {{ getTitleControl()?.errors?.['required'] ? 'Title is required' : '' }}
+                                </span>
+                            </div>
+                            <div class="input-box">
+                                <div class="input-flied">
+                                    <textarea formControlName="body" name="" id="" rows="10"
+                                        placeholder="enter your message"></textarea>
+                                </div>
+                                <span *ngIf="getBodyControl()?.invalid && getBodyControl()?.touched" class="msg-error">
+                                    {{ getBodyControl()?.errors?.['required'] ? 'Message body is required' : '' }}
+                                </span>
+                            </div>
+                            <div class="form-btn">
+                                <button [disabled]="contactForm.invalid || sendLoading" class="d-flex" (click)="sendContact()" type="submit">
+                                    <app-icon-loading *ngIf="sendLoading"></app-icon-loading>
+                                    send
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="circle-bg"></div>
+</section>

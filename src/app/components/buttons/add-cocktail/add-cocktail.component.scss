@@ -1,0 +1,137 @@
+@use '../../../../styles.scss' as color;
+
+button {
+    margin: 0px 10px;
+    border: none;
+    padding: 8px 20px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: capitalize;
+    background-color: color.$primary-color;
+}
+
+.msg-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.add-recipe-box {
+    .content {
+        width: 90%;
+        height: 80vh;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        background-color: #fff;
+        text-transform: capitalize;
+        animation: showAddRecipeBox ease-in-out 1s;
+
+        h2 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #2f2f32;
+            line-height: 40px;
+            padding-bottom: 10px;
+
+            &::first-letter {
+                color: color.$primary-color;
+            }
+        }
+
+        .closeShareBox {
+            cursor: pointer;
+
+            &:hover {
+                transition: 1s;
+                transform: scale(1.2);
+                border-radius: 4px;
+                background-color: rgb(255, 173, 173);
+            }
+        }
+
+        .add-recipe-form {
+            .input-box {
+
+                input,
+                textarea {
+                    width: 100%;
+                    padding: 8px 20px;
+                    outline: none;
+                    margin-top: 15px;
+                    caret-color: color.$primary-color;
+
+                    &::placeholder {
+                        text-transform: capitalize;
+                    }
+
+                    &:focus {
+                        border-radius: 4px;
+                        outline: none;
+                        border: 1px solid color.$primary-color;
+                    }
+                }
+
+                textarea {
+                    height: 100px;
+                }
+            }
+        }
+
+        .add-recipe-bg {
+            height: 550px;
+            position: relative;
+
+            .add-recipe-img {
+                width: 350px;
+                height: 350px;
+                position: absolute;
+                padding: 20px;
+                right: 20px;
+                z-index: 2;
+            }
+
+            &::after {
+                content: '';
+                width: 200px;
+                height: 200px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                border-radius: 50%;
+                opacity: 0.5;
+                z-index: 1;
+                background-color: color.$primary-color;
+            }
+        }
+    }
+}
+
+@keyframes showAddRecipeBox {
+    from {
+        transform: translateY(-800px);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+
+@media(max-width: 1024px) {
+    .add-recipe-bg {
+        display: none !important;
+    }
+
+    button {
+        margin: 10px 0px;
+        width: 100%;
+    }
+}

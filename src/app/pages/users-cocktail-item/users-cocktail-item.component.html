@@ -1,0 +1,74 @@
+<div *ngIf="loading">
+    <app-page-loading></app-page-loading>
+</div>
+
+<section class="cocktails-page">
+    <div class="cocktail-slider">
+        <img src="./assets/images/menu/18.png" width="300px" class="img-fluid " alt="menu-img">
+        <img src="./assets/images/menu/19.png" width="100px" class="img-fluid " alt="menu-img">
+        <div class="container mx-auto">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="cocktail-slider-info">
+                        <h2>fresh cocktails</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore at provident mollitia amet
+                            quidem iste praesentium nihil illum reiciendis! Totam!</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="cocktail-slider-img">
+                        <img src="./assets/images/menu/17.png" class="img-fluid" alt="menu-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#fff" fill-opacity="1" d="M0,192L1440,0L1440,320L0,320Z"></path>
+        </svg>
+    </div>
+    <div class="bg-right">
+        <img src="./assets/images/home-page/img4.png" width="300px" class="img-fluid" alt="menu-img">
+    </div>
+</section>
+
+<section class="cocktails-cards">
+    <div class="container mx-auto">
+        <div class="search-box d-flex">
+            <input #searchValue type="text" placeholder="Search..." (keyup)="checkSearch(searchValue.value)">
+            <button (click)="search(searchValue.value)">search</button>
+        </div>
+
+        <div class="cocktail-items">
+            <h2>most popular</h2>
+            <div class="row pt-5">
+                <div *ngFor="let cocktail of pages[currentPage]" class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <app-master-card [ratings]="cocktailRatings" [data]="cocktail" [type]="'cocktail'"></app-master-card>
+                </div>
+            </div>
+
+        </div>
+
+        <div *ngIf="pages.length==0">
+            <p class="text-center">No data to show</p>
+        </div>
+        <div *ngIf="pages.length>0">
+            <nav aria-label="navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a [hidden]="currentPage == 0" class="page-link" (click)="prev()" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngFor="let page of pages; let i=index" class="page-item"><a class="page-link"
+                            (click)="showData(i)">{{i+1}}</a></li>
+                    <li class="page-item">
+                        <a [hidden]="currentPage == totalPages-1 || totalPages == 0" class="page-link" (click)="next()"
+                            aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
