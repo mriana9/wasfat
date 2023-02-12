@@ -1,6 +1,6 @@
 # Wasfat
 
-📌 Website Link: https://wasfat-9a8cf.web.app/home
+📌 Live Preview: https://wasfat-9a8cf.web.app/home
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
